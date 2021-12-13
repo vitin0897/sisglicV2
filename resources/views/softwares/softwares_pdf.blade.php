@@ -12,6 +12,7 @@
     <h1>Softwares</h1>
     @foreach ($softwares as $s)
         <p>{{ $s->descSoftware }}</p>
+        <hr>
     @endforeach
 </body>
 

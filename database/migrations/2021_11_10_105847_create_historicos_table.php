@@ -13,7 +13,7 @@ class CreateHistoricosTable extends Migration
      */
     public function up()
     {
-        Schema::create('historicos', function (Blueprint $table) {
+        Schema::connection('sisglic')->create('historicos', function (Blueprint $table) {
             $table->id();
             $table->string("usuario")->nullable();
             $table->string("lic_antigo")->nullable();

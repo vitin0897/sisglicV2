@@ -12,6 +12,7 @@
     <h1>Tipos</h1>
     @foreach ($tipos as $t)
         <p>{{ $t->descTipo }}</p>
+        <hr>
     @endforeach
 </body>
 

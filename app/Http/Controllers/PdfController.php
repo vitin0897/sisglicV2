@@ -12,36 +12,48 @@ use PDF;
 
 class PdfController extends Controller
 {
-    public function gerarPdf(){
-        $licencas = Licencas::all();
+    public function gerarPdf()
+    {
+        // $licencas = Licencas::all();
+
+        $licencas = DB::table('licencas')
+            ->join('computadores', 'licencas.computador_id', '=', 'computadores.id')
+            ->join('softwares', 'licencas.software_id', '=', 'softwares.id')
+            ->select('licencas.*', 'softwares.descSoftware', 'computadores.colaboradorfield');
+
+        $licencas = $licencas->get();
 
         $pdf = PDF::loadview('licencas.licencas_pdf', compact('licencas'));
 
         return $pdf->setPaper('a4')->stream('Todas licencas');
     }
 
-    public function pdfTipo(){
+    public function pdfTipo()
+    {
         $tipos = Tipos::all();
         $pdf = PDF::loadview('tipos.tipos_pdf', compact('tipos'));
         return $pdf->setPaper('a4')->stream('Tipos');
     }
 
-    public function pdfStatus(){
+    public function pdfStatus()
+    {
         $status = Status::all();
         $pdf = PDF::loadview('status.status_pdf', compact('status'));
         return $pdf->setPaper('a4')->stream('Status');
     }
 
-    public function pdfSoftwares(){
+    public function pdfSoftwares()
+    {
         $softwares = Softwares::all();
         $pdf = PDF::loadview('softwares.softwares_pdf', compact('softwares'));
         return $pdf->setPaper('a4')->stream('Softwares');
     }
 
-    public function log(){
+    public function log()
+    {
         $log = DB::table('historicos')
-                ->orderBy('id', 'desc')
-                ->get();
+            ->orderBy('id', 'desc')
+            ->get();
         $pdf = PDF::loadview('log', compact('log'));
         return $pdf->setPaper('a4')->stream('log');
     }

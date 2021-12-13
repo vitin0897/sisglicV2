@@ -12,6 +12,7 @@
     <h1>Status</h1>
     @foreach ($status as $s)
         <p>{{ $s->descStatus }}</p>
+        <hr>
     @endforeach
 </body>
 

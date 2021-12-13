@@ -35,12 +35,16 @@
             <!-------------------------------->
             <div class="col">
                 <div class="row">
-                    <div class="col-3">
-                        <a href="/log" class="btn btn-info">Log</a>
+                    <div class="col-5">
+                        <a href="/licencas/create" class="btn btn-success">Adicionar licenca</a>
                     </div>
 
-                    <div class="col-9">
-                        <a href="/licencas/create" class="btn btn-success">Adicionar licenca</a>
+                    <div class="col-4">
+                        <a href="/pdf" class="btn btn-info">Exportar</a>
+                    </div>
+
+                    <div class="col">
+                        <a href="/log" class="btn btn-info">Log</a>
                     </div>
                 </div>
 
